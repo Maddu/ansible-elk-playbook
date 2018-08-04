@@ -9,6 +9,6 @@
   roles:
   #- { role: java }
   - { role: elasticsearch }
-  #- { role: kibana }
+  - { role: kibana }
   #- { role: metricbeat }
 
