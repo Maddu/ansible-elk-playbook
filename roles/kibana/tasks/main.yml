@@ -2,6 +2,17 @@
 #
 # Installing Kibana
 #
+- name: Add Elasticsearch apt key
+  apt_key:
+   url: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+   state: present
+
+# Add the Elasticsearch apt repo. For versions 6 of the stack - use '6.x-prerelease':
+
+- name: Adding Elasticsearch repo
+  apt_repository:
+   repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main
+   state: present
 
 # Install Kibana 
 
@@ -28,7 +39,7 @@
   lineinfile:
    destfile: /etc/kibana/kibana.yml
    regexp: 'elasticsearch.url:'
-   line: 'elasticsearch.url: "http://localhost:9200"'
+   line: 'elasticsearch.url: "http://52.66.199.116:9200"'
    
 # Starting Kibana
 

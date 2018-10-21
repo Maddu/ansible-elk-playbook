@@ -32,13 +32,27 @@
    regexp: 'network.host:'
    line: 'network.host: 0.0.0.0'
  
-# Update Elasticsearch port in config file 
-
-- name: Updating the port in config file 
+# Update Elasticsearch port in config file
+- name: Updating the port in config file
   lineinfile:
    destfile: /etc/elasticsearch/elasticsearch.yml
    regexp: 'http.port:'
    line: 'http.port: 9200'
+
+# Updating the jvm.options
+
+- name: Updating xms value in jvm.options 
+  lineinfile:
+   destfile: /etc/elasticsearch/jvm.options
+   regexp: '-Xms2g'
+   line: '-Xms512m'
+
+- name: Updating xmx value in jvm.options
+  lineinfile:
+   destfile: /etc/elasticsearch/jvm.options
+   regexp: '-Xmx2g'
+   line: '-Xmx512m'
+
  
 # Start Elasticsearch
 - name: Starting Elasticsearch
